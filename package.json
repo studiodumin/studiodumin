@@ -1,12 +1,9 @@
 {
-  "homepage": "https://studiodumin.github.io/studiodumin/",
   "name": "studiodumin",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -29,7 +26,6 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
     "sass-embedded": "^1.85.1",
     "vite": "^6.2.0"
