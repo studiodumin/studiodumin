@@ -1,0 +1,111 @@
+@use "./mixins";
+
+.design-service {
+  @include mixins.displayFlex($fd: column, $ga: clamp(1.5rem, 1.125rem + 1.667vw, 3rem));
+  padding: clamp(1.5rem, 0.875rem + 2.778vw, 4rem);
+  @include mixins.sectionPaddingLR;
+  background: var(--color-white);
+
+  .side-by-side {
+    @include mixins.displayFlex($jc: space-between, $ga: 2rem);
+    width: 100%;
+
+    @media screen and (max-width: 700px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .left {
+      @include mixins.displayFlex($jc: flex-start);
+      flex: 1;
+
+      .h1 {
+        width: 100%;
+        font-weight: var(--font-semibold);
+      }
+    }
+
+    .right {
+      @include mixins.displayFlex;
+      flex: 1;
+      width: 100%;
+
+      .p2 {
+        font-weight: var(--font-regular);
+      }
+
+      @media screen and (max-width: 700px) {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .service-list {
+    @include mixins.displayFlex($fd: column, $ga: 2rem);
+    width: calc(100% + 2 * clamp(1.5rem, 0.625rem + 3.889vw, 5rem));
+
+    .service-card {
+      @include mixins.displayFlex($jc: space-between, $ga: 3rem);
+      padding: 1.5rem 0;
+      @include mixins.sectionPaddingLR;
+      width: 100%;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      &:nth-child(1) {
+        background: var(--bg-primary);
+      }
+
+      @media screen and (max-width: 1050px) {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .service-card-left {
+        @include mixins.displayFlex($ga: 1.5rem, $jc: flex-start);
+        flex: 1;
+        width: 100%;
+
+        & img {
+          width: clamp(10rem, 8rem + 8.889vw, 18rem);
+          aspect-ratio: 6 / 5;
+          border-radius: 8px;
+          object-fit: cover;
+          flex-shrink: 0;
+        }
+
+        .h2 {
+          font-weight: var(--font-regular);
+        }
+      }
+
+      .service-card-right {
+        @include mixins.displayFlex($ga: 3rem);
+        flex: 1;
+
+        .p2 {
+          font-weight: var(--font-regular);
+        }
+
+        .btn {
+          @include mixins.displayFlex;
+          padding: clamp(0.8rem, 0.75rem + 0.222vw, 1rem);
+          border-radius: 50%;
+          border: none;
+          outline: none;
+          background: var(--bg-secondary-medium);
+          cursor: pointer;
+
+          & img {
+            width: clamp(1.2rem, 1.075rem + 0.556vw, 1.7rem);
+            aspect-ratio: 1 / 1;
+          }
+        }
+      }
+    }
+  }
+}

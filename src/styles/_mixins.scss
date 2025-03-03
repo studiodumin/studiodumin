@@ -1,0 +1,18 @@
+@mixin font-style($size, $line-height) {
+  font-size: $size;
+  line-height: $line-height;
+}
+
+@mixin displayFlex($jc: center, $ai: center, $fd: row, $ga: 0, $fwr: nowrap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+  gap: $ga;
+  flex-wrap: $fwr;
+}
+
+@mixin sectionPaddingLR {
+  padding-left: clamp(1.5rem, 0.625rem + 3.889vw, 5rem);
+  padding-right: clamp(1.5rem, 0.625rem + 3.889vw, 5rem);
+}

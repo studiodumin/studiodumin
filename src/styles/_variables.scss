@@ -1,0 +1,31 @@
+:root {
+  --color-blue: #3A8C96;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  --bg-primary: #90CACC;
+  --bg-primary-light: #98DDE0;
+  --bg-primary-dark: #6AAAAE;
+
+  --bg-secondary-light: #FFF4D3;
+  --bg-secondary-medium: #FFF2AC;
+  --bg-secondary-dark: #FAD725; /* For stars */
+  --bg-secondary-hover: #FCE77D;
+
+  --ff: "Outfit";
+
+  --fs-h1: clamp(1.5rem, 0.875rem + 2.778vw, 4rem);
+  --fs-h2: clamp(1.3rem, 1rem + 1.333vw, 2.5rem);
+  --fs-h3: clamp(1rem, 0.75rem + 1.111vw, 2rem);
+  --fs-p1: clamp(0.8rem, 0.625rem + 0.778vw, 1.5rem);
+  --fs-p2: clamp(0.8rem, 0.7rem + 0.444vw, 1.2rem);
+
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  --border: 1px solid var(--color-black);
+}

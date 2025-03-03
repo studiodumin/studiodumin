@@ -1,0 +1,42 @@
+@use "./mixins";
+
+.vision {
+  position: relative;
+  @include mixins.displayFlex($ai: flex-start);
+  padding: clamp(1.5rem, 0.875rem + 2.778vw, 4rem) 0 0;
+  @include mixins.sectionPaddingLR;
+  width: 100%;
+  height: clamp(15rem, 11.25rem + 16.667vw, 30rem);
+  background: var(--bg-primary);
+
+  &__content {
+    @include mixins.displayFlex($jc: space-between);
+    width: 100%;
+
+    @media screen and (max-width: 700px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    & .h1 {
+      flex: 1;
+      font-weight: var(--font-semibold);
+    }
+
+    & .p2 {
+      flex: 1;
+      font-weight: var(--font-regular);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 110%;
+    left: 50%;
+    width: clamp(20rem, 10rem + 44.444vw, 60rem);
+    aspect-ratio: 16 / 9;
+    border-radius: 1rem;
+  }
+}

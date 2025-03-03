@@ -1,0 +1,59 @@
+@use "./styles/mixins";
+@use "./styles/variables";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  scroll-margin-top: var(--navbar-height, 5.5rem);
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+  font-family: var(--ff), sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.h1 {
+  @include mixins.font-style(var(--fs-h1), 120%);
+}
+
+.h2 {
+  @include mixins.font-style(var(--fs-h2), 120%);
+}
+
+.h3 {
+  @include mixins.font-style(var(--fs-h3), 120%);
+}
+
+.p1 {
+  @include mixins.font-style(var(--fs-p1), 150%);
+}
+
+.p2 {
+  @include mixins.font-style(var(--fs-p2), 150%);
+}
+
+.btn1, .btn2 {
+  border: none;
+  outline: none;
+  color: var(--color-black);
+  font-family: var(--ff), "sans-serif";
+  cursor: pointer;
+}
+
+.btn1 {
+  @include mixins.font-style(var(--fs-p1), 120%);
+}
+
+.btn2 {
+  @include mixins.font-style(var(--fs-p2), 120%);
+}

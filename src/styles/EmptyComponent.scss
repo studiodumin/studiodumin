@@ -1,0 +1,7 @@
+.empty__component {
+  width: 100%;
+  height: clamp(15rem, 11.25rem + 16.667vw, 30rem);
+  border-top: var(--border);
+  border-bottom: var(--border);
+  background: var(--color-white);
+}
