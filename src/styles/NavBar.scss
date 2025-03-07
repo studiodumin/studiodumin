@@ -14,10 +14,16 @@
   background: var(--color-white);
 
   & .logo-container {
+    @include mixins.displayFlex($ga: 0.3rem);
     cursor: pointer;
   }
 
-  & .logo-container .p2 {
+  & .logo-container>img {
+    width: clamp(1.5rem, 1.25rem + 1.111vw, 2.5rem);
+    aspect-ratio: 1 / 1;
+  }
+
+  & .logo-container>.p2 {
     color: var(--color-blue);
     font-weight: var(--font-semibold);
     user-select: none;

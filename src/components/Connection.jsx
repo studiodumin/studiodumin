@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
+import { ClipLoader } from 'react-spinners';
 import connectionBG from '../assets/images/connection-bg.png';
 import '../styles/Connection.scss';
 
@@ -17,6 +18,7 @@ const Connection = () => {
 
   const [errors, setErrors] = useState({});
   const [statusMessage, setStatusMessage] = useState('');
+  const [loading, setLoading] = useState(false);  // Loading state
 
   const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
   const validatePhone = (phone) => /^[0-9]{10}$/.test(phone);
@@ -30,30 +32,34 @@ const Connection = () => {
     e.preventDefault();
 
     let newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required.';
-    if (!validateEmail(formData.email)) newErrors.email = 'Enter a valid email.';
-    if (!validatePhone(formData.phone)) newErrors.phone = 'Enter a valid 10-digit phone number.';
-    if (!formData.message.trim()) newErrors.message = 'Message cannot be empty.';
+    if(!formData.name.trim()) newErrors.name = 'Name is required.';
+    if(!validateEmail(formData.email)) newErrors.email = 'Enter a valid email.';
+    if(!validatePhone(formData.phone)) newErrors.phone = 'Enter a valid 10-digit phone number.';
+    if(!formData.message.trim()) newErrors.message = 'Message cannot be empty.';
 
-    if (Object.keys(newErrors).length > 0) {
+    if(Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
+
+    setLoading(true);
 
     emailjs.send(serviceID, templateID, formData, userID)
       .then(() => {
         setStatusMessage('Message sent successfully!');
         setFormData({ name: '', email: '', phone: '', message: '' });
-        setTimeout(() => setStatusMessage(''), 3000);
       })
       .catch(() => {
         setStatusMessage('Failed to send message. Please try again later.');
+      })
+      .finally(() => {
+        setLoading(false);
         setTimeout(() => setStatusMessage(''), 3000);
       });
   };
 
   return (
-    <div className="connection">
+    <div id="connection" className="connection">
       <div className="connection__content">
         <div className="connection__content__header">
           <p className="p1">Our connection</p>
@@ -115,7 +121,9 @@ const Connection = () => {
           </div>
           <div className="connection__content__form__groups">
             <div className="input__group">
-              <button type="submit" className="btn1">Submit</button>
+              <button type="submit" className="btn1" disabled={loading}>
+                {loading ? <ClipLoader size={25} color="#000000" /> : "Submit"}
+              </button>
             </div>
           </div>
           {statusMessage && <p className="p2">{statusMessage}</p>}

@@ -57,6 +57,7 @@
         }
 
         .input__group .btn1 {
+          @include mixins.displayFlex();
           margin-top: 0.5rem;
           padding: clamp(0.7rem, 0.575rem + 0.556vw, 1.2rem) clamp(1.2rem, 1rem + 0.889vw, 2rem);
           width: 100%;

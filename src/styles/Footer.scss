@@ -71,9 +71,6 @@
       &>.p1 {
         font-weight: var(--font-regular);
       }
-      &>.p2 {
-        font-weight: var(--font-light);
-      }
 
       &__input-group {
         @include mixins.displayFlex($jc: space-between, $ga: 1rem);

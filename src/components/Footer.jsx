@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import {ClipLoader} from "react-spinners";
 import mailIcon from "../assets/images/mail-icon.svg";
 import twitterIcon from "../assets/images/twitter-icon.svg";
 import instagramIcon from "../assets/images/instagram-icon.svg";
@@ -17,6 +18,7 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const validateEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -27,10 +29,17 @@ const Footer = () => {
   };
 
   const sendEmails = () => {
-    if(!validateEmail(email)) {
+    if (!email.trim()) {
+      setError("Email is required.");
+      return;
+    }
+
+    if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
       return;
     }
+
+    setLoading(true);
 
     const userEmailParams = {
       to_name: email,
@@ -55,6 +64,9 @@ const Footer = () => {
         console.error("EmailJS Error:", error);
         setError("Failed to send email. Please try again later.");
         setTimeout(() => setError(""), 2000);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -91,8 +103,11 @@ const Footer = () => {
               value={email}
               onChange={handleInputChange}
             />
-            <button onClick={sendEmails} disabled={!email.trim()}>
-              <img src={mailIcon} alt="Mail" />
+            <button onClick={sendEmails}>
+              {loading?
+                <ClipLoader size={25} color="#000000" />:
+                <img src={mailIcon} alt="Mail" />
+              }
             </button>
           </div>
           {error && <p className="p2">{error}</p>}

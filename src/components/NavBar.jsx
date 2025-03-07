@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import logo from "../assets/images/studiodumin-logo.svg";
 import "../styles/NavBar.scss";
 
 const navLinks = [
@@ -17,7 +18,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const updateNavbarHeight = () => {
-      if (navRef.current) {
+      if(navRef.current) {
         const height = navRef.current.offsetHeight;
         document.documentElement.style.setProperty("--navbar-height", `${height}px`);
       }
@@ -33,7 +34,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
+      if(
         menuRef.current &&
         !menuRef.current.contains(event.target) &&
         menuIconRef.current &&
@@ -55,12 +56,13 @@ const NavBar = () => {
   const handleAnchorClick = (event, id) => {
     event.preventDefault();
     const target = document.getElementById(id);
-    if (target) target.scrollIntoView({ behavior: "smooth" });
+    if(target) target.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div className="navbar" ref={navRef}>
       <div className="logo-container" onClick={() => handleIconClick()}>
+        <img src={logo} alt="Studiodumin"/>
         <p className="p2">STUDIODUMIN</p>
       </div>
       <div className="nav-actions">
@@ -71,7 +73,9 @@ const NavBar = () => {
             </a>
           ))}
         </div>
-        <button className="btn1 contact-btn">Contact Us</button>
+        <button className="btn1 contact-btn" onClick={(e) =>  handleAnchorClick(e, "connection")}>
+          Contact Us
+        </button>
         <div className="menu" onClick={() => setMenuOpen(!menuOpen)} ref={menuIconRef}>
           <i className="material-icons">menu</i>
         </div>
