@@ -91,6 +91,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer__content__newsletter">
+          <p className="p1">
+            Call Us: <a href="tel:+919980602273">+91-9980602273</a>
+          </p>
           <p className="p1">Newsletter - Sign up</p>
           <p className="p1">
             Subscribe to our newsletter to receive updates on the latest news!
